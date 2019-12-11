@@ -11,8 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const util_1 = require("util");
-function render(paths, params, options) {
-    var _a;
+function render(paths, params) {
     return __awaiter(this, void 0, void 0, function* () {
         let ret = '';
         for (let path of paths) {
@@ -22,11 +21,9 @@ function render(paths, params, options) {
         }
         let match;
         while ((match = ret.match(/<include (\w+) \/>/)) && match.length > 0) {
-            ret = ret.replace(/<include \w+ \/>/, yield render([ret.match(/<include (\w+) \/>/)[1]], params, options));
+            ret = ret.replace(/<include \w+ \/>/, yield render([match[1]], params));
         }
-        ret = ret.replace(/<!\-\-.*\-\->/s, '');
-        if ((_a = options) === null || _a === void 0 ? void 0 : _a.removeWhitespace)
-            ret = ret.replace(/>\s*</g, '><').replace(/>(\S*)\s*(\S*)</g, '>$1 $2<');
+        ret = ret.replace(/<!\-\-.*\-\->/s, '').replace(/>\s*</g, '><').replace(/>(\S*)\s*(\S*)</g, '>$1 $2<');
         let matches = [...new Set(ret.match(/#{\s*\w*\s*}/g))];
         for (let match of matches)
             ret = ret.replace(new RegExp(match, 'g'), params[match.replace(/[#|{|}|\s]*/g, '')]);

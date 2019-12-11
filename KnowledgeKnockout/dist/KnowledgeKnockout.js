@@ -14,7 +14,7 @@ app.use(helmet());
 app.use(compression());
 app.use(express.static('public'));
 app.use(express.json());
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: 'eaO1LJRfcOZEiXMs',
     store: MySql_1.MySQL.sessionStore,
@@ -24,7 +24,10 @@ app.use(session({
 }));
 // initialize session variables
 app.use((req, res, next) => {
-    req.session.exampleUserName = 'bob';
+    if (!req.session.initialized) {
+        req.session.exampleUserName = Math.random();
+        req.session.initialized = true;
+    }
     next();
 });
 // example
