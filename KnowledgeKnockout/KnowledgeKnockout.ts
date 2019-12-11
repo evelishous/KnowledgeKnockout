@@ -34,7 +34,6 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
     // req obj is the same in all middleware functions and route handlers
     console.log(req.session.exampleUserName);
-
     next();
 });
 
