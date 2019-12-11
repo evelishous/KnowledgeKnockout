@@ -36,6 +36,18 @@ DB_NAME=KnowledgeKnockoutDatabase</Environment>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="dist\KnowledgeKnockout.js" />
+    <Content Include="dist\KnowledgeKnockout.js.map" />
+    <Content Include="dist\mysql\MySql.js" />
+    <Content Include="dist\mysql\MySql.js.map" />
+    <Content Include="dist\routes\any_route.js" />
+    <Content Include="dist\routes\any_route.js.map" />
+    <Content Include="dist\routes\example_route.js" />
+    <Content Include="dist\routes\example_route.js.map" />
+    <Content Include="dist\routes\index_route.js" />
+    <Content Include="dist\routes\index_route.js.map" />
+    <Content Include="dist\views\render.js" />
+    <Content Include="dist\views\render.js.map" />
     <Content Include="views\demo_socket.io.html">
       <SubType>Code</SubType>
     </Content>
@@ -54,6 +66,10 @@ DB_NAME=KnowledgeKnockoutDatabase</Environment>
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="dist\" />
+    <Folder Include="dist\mysql\" />
+    <Folder Include="dist\routes\" />
+    <Folder Include="dist\views\" />
     <Folder Include="mysql\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
