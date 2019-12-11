@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+</head>
+<body>
+    <script>
+
+        const socket = io('http://some.where');
+
+        // receiving messages
+        socket.on('messageName', /*callback function*/ message => {
+            console.log(message);
+        });
+
+        // emitting messages
+        socket.emit('messageName', 'this is a message');
+
+    </script>
+</body>
+</html>
