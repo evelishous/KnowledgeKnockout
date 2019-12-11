@@ -15,11 +15,12 @@ export class MySQL { // https://www.npmjs.com/package/mysql
     }
     private static initialize(): void {
         if (MySQL.initialized) return;
+
         MySQL.connection = mysql.createConnection(MySQL.connectionConfig);
 
         MySQL.connection.connect();
 
-        MySQL.sessionStore = new MySQLStore(MySQL.connectionConfig);
+        MySQL.sessionStore = new MySQLStore(MySQL.connectionConfig, MySQL.connection);
 
         MySQL.initialized = true;
     }
