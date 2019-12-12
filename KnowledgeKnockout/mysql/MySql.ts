@@ -5,7 +5,7 @@ import * as MySQLStore from 'express-mysql-session';
 export class MySQL { // https://www.npmjs.com/package/mysql
     private static connection: Connection;
     private static initialized: boolean = false;
-    public static sessionStore: MySQLStore;
+    public static _sessionStore: MySQLStore;
     private static connectionConfig: ConnectionConfig = {
         host: process.env.DB_HOST,
         port: parseInt(process.env.DB_PORT),
@@ -27,9 +27,13 @@ export class MySQL { // https://www.npmjs.com/package/mysql
 
         MySQL.connection.connect();
 
-        MySQL.sessionStore = new MySQLStore(MySQL.connectionConfigSessionStore, MySQL.connection);
+        MySQL._sessionStore = new MySQLStore(MySQL.connectionConfigSessionStore, MySQL.connection);
 
         MySQL.initialized = true;
+    }
+    public static get sessionStore(): MySQLStore {
+        if (!MySQL.initialized) MySQL.initialize();
+        return MySQL.sessionStore;
     }
     public static query(query: string, inserts: string[]): Promise<any> { // https://www.npmjs.com/package/mysql#preparing-queries
         return new Promise((resolve, reject) => {
