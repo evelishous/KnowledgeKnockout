@@ -6,10 +6,13 @@ import { MySQL } from './mysql/MySql';
 import { any_route_get } from './routes/any_route';
 import { example_route_get, example_route_post } from './routes/example_route';
 import { index_route_get } from './routes/index_route';
+import { SocketConnection } from './socket_connection/SocketConnection';
 
 const app = express();
 
-app.listen(80);
+const server = app.listen(80);
+
+SocketConnection.initialize(server);
 
 app.use(helmet());
 app.use(compression());
@@ -19,7 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(session({
-    secret: 'eaO1LJRfcOZEiXMs',
+    secret: process.env.SESSION_SECRET,
     store: MySQL.sessionStore,
     resave: false,
     saveUninitialized: true,

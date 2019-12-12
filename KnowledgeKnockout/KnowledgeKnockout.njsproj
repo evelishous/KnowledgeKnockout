@@ -11,7 +11,8 @@ DB_PORT=3306
 DB_USER=KK_User
 DB_PASS=KK_Pwd
 DB_NAME=KK_DBName
-DB_SessionStoreName=KK_DBSessionStore</Environment>
+DB_SessionStoreName=KK_DBSessionStore
+SESSION_SECRET=eaO1LJRfcOZEiXMs</Environment>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -56,11 +57,15 @@ DB_SessionStoreName=KK_DBSessionStore</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="socket_connection\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
     <Folder Include="routes\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="helpers.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="mysql\MySql.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -71,6 +76,9 @@ DB_SessionStoreName=KK_DBSessionStore</Environment>
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />
