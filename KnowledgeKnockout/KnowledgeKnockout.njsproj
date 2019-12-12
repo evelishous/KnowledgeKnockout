@@ -8,9 +8,10 @@
     <Environment>NODE_ENV=development
 DB_HOST=localhost
 DB_PORT=3306
-DB_USER=KnowledgeKnockoutUser
-DB_PASS=KnowledgeKnockoutPassword
-DB_NAME=KnowledgeKnockoutDatabase</Environment>
+DB_USER=KK_User
+DB_PASS=KK_Pwd
+DB_NAME=KK_DBName
+DB_SessionStoreName=KK_DBSessionStore</Environment>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>

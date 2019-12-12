@@ -6,12 +6,19 @@ export class MySQL { // https://www.npmjs.com/package/mysql
     private static connection: Connection;
     private static initialized: boolean = false;
     public static sessionStore: MySQLStore;
-    public static connectionConfig: ConnectionConfig = {
+    private static connectionConfig: ConnectionConfig = {
         host: process.env.DB_HOST,
         port: parseInt(process.env.DB_PORT),
         user: process.env.DB_USER,
         password: process.env.DB_PASS,
         database: process.env.DB_NAME
+    }
+    private static connectionConfigSessionStore: ConnectionConfig = {
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT),
+        user: process.env.DB_USER,
+        password: process.env.DB_PASS,
+        database: process.env.DB_SessionStoreName
     }
     private static initialize(): void {
         if (MySQL.initialized) return;
@@ -20,14 +27,14 @@ export class MySQL { // https://www.npmjs.com/package/mysql
 
         MySQL.connection.connect();
 
-        MySQL.sessionStore = new MySQLStore(MySQL.connectionConfig, MySQL.connection);
+        MySQL.sessionStore = new MySQLStore(MySQL.connectionConfigSessionStore, MySQL.connection);
 
         MySQL.initialized = true;
     }
     public static query(query: string, inserts: string[]): Promise<any> { // https://www.npmjs.com/package/mysql#preparing-queries
         return new Promise((resolve, reject) => {
             MySQL.initialize();
-            MySQL.connection.query(query, inserts, (error: MysqlError, results: any, fields: FieldInfo[]) => {
+            MySQL.connection.query(query, inserts, (error: MysqlError, results: any[], fields: FieldInfo[]) => {
                 if (error) reject(error);
                 resolve(results);
             });
