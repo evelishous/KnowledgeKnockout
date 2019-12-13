@@ -2,7 +2,7 @@
   "name": "knowledge-knockout",
   "version": "0.0.0",
   "description": "KnowledgeKnockout",
-  "main": "app.js",
+  "main": "dist/KnowledgeKnockout.js",
   "author": {
     "name": ""
   },

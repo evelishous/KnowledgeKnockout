@@ -11,7 +11,7 @@ DB_PORT=3306
 DB_USER=KK_User
 DB_PASS=KK_Pwd
 DB_NAME=KK_DBName
-DB_SessionStoreName=KK_DBSessionStore
+DB_SessionStoreName=KK_DBSessStore
 SESSION_SECRET=eaO1LJRfcOZEiXMs
 SESSIONID=sid</Environment>
   </PropertyGroup>
@@ -21,7 +21,7 @@ SESSIONID=sid</Environment>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>740abd50-c86e-475e-989d-4958e1ca7180</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>KnowledgeKnockout.ts</StartupFile>
+    <StartupFile>dist\KnowledgeKnockout.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -39,21 +39,11 @@ SESSIONID=sid</Environment>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="views\demo_socket.io.html">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\head.html">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="views\index.html">
-      <SubType>Code</SubType>
-    </Content>
     <None Include="KnowledgeKnockout.ts" />
     <Content Include="package.json" />
     <Content Include="public\test.txt">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="README.md" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>

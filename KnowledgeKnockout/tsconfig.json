@@ -4,6 +4,7 @@
     "target": "ES6",
     "lib": [ "ESNext" ],
     "sourceMap": true,
+    "declaration": false,
     "outDir": "dist"
   },
   "exclude": [
