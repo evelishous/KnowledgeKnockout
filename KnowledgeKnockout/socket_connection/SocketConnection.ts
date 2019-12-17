@@ -2,7 +2,7 @@ import { Server } from 'http';
 import * as socketio from 'socket.io';
 
 export class SocketConnection {
-    private static sockets: Map<string, socketio.Socket>; // Map<sessionID, socket>
+    public static sockets: Map<string, socketio.Socket>; // Map<sessionID, socket>
     private static io: socketio.Server;
     public static initialize(server: Server) {
         SocketConnection.io = socketio(server);

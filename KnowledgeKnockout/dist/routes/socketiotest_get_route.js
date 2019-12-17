@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const render_1 = require("../views/render");
 function socketiotest_get_route(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        res.send(yield render_1.render(['demo_socket.io'], { title: 'socket.io test' }));
+        res.send(yield render_1.render(['_example_socket.io'], { title: 'socket.io example chat' }));
     });
 }
 exports.socketiotest_get_route = socketiotest_get_route;

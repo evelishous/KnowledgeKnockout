@@ -7,6 +7,7 @@ import { example_route_get, example_route_post } from './routes/example_route';
 import { index_route_get } from './routes/index_route';
 import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
+import { ChatExample } from './chat_example';
 
 const app = express();
 
@@ -55,3 +56,5 @@ app.get('/example', example_route_get).post('/example', example_route_post);
 app.get('/socketiotest', socketiotest_get_route);
 
 app.get('*', any_route_get);
+
+ChatExample.initialize();

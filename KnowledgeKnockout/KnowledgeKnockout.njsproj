@@ -54,6 +54,9 @@ SESSIONID=sid</Environment>
     <Folder Include="routes\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="chat_example.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="helpers.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
