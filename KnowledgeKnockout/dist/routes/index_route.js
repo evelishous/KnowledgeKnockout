@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const render_1 = require("../views/render");
 function index_route_get(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        res.send(yield render_1.render(['index'], { title: 'welcome' }));
+        res.send(yield render_1.render(['_example_index'], { title: 'welcome' }));
     });
 }
 exports.index_route_get = index_route_get;

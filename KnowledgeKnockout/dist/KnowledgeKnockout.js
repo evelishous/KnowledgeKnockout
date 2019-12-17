@@ -18,7 +18,7 @@ app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: String(process.env.SESSION_SECRET),
     //store: MySQL.sessionStore,
     resave: false,
     saveUninitialized: true,
@@ -27,7 +27,7 @@ app.use(session({
 }));
 // initialize session variables
 app.use((req, res, next) => {
-    if (!req.session.initialized) {
+    if (req.session && !req.session.initialized) {
         req.session.exampleUserName = Math.random();
         req.session.initialized = true;
     }
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 // example
 app.use((req, res, next) => {
     // req obj is the same in all middleware functions and route handlers
-    console.log(req.session.id);
+    // console.log(req.session?.id);
     next();
 });
 app.get('/', index_route_1.index_route_get);
