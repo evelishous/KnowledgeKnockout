@@ -9,7 +9,7 @@ export async function render(paths: string[], params: any) {
         ret += await promisify(readFile)(path, { encoding: 'utf-8' });
     }
 
-    let match: RegExpMatchArray;
+    let match: RegExpMatchArray | null;
     while ((match = ret.match(/<include (\w+) \/>/)) && match.length > 0) {
         ret = ret.replace(/<include \w+ \/>/, await render([match[1]], params));
     }

@@ -17,17 +17,15 @@ class MySQL {
         return MySQL.sessionStore;
     }
     static query(query, inserts) {
-        return new Promise((resolve, reject) => {
-            MySQL.initialize();
-            MySQL.connection.query(query, inserts, (error, results, fields) => error ? reject(error) : resolve(results));
-        });
+        MySQL.initialize();
+        return new Promise((resolve, reject) => MySQL.connection.query(query, inserts, (error, results, fields) => error ? reject(error) : resolve(results)));
     }
 }
 exports.MySQL = MySQL;
 MySQL.initialized = false;
 MySQL.connectionConfig = {
     host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT),
+    port: parseInt(process.env.DB_PORT + ''),
     user: process.env.DB_USER,
     password: process.env.DB_PASS,
     database: process.env.DB_NAME

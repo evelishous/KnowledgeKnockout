@@ -5,13 +5,10 @@ class SocketConnection {
     static initialize(server) {
         SocketConnection.io = socketio(server);
         SocketConnection.sockets = new Map();
-        SocketConnection.io.on('connection', socket => {
-            SocketConnection.sockets.set(SocketConnection.getSessionCookie(socket), socket);
-            console.log(SocketConnection.getSessionCookie(socket));
-        });
+        SocketConnection.io.on('connection', socket => SocketConnection.sockets.set(SocketConnection.getSessionCookie(socket), socket));
     }
-    static get(userID) {
-        return SocketConnection.sockets.get(userID);
+    static get(sessionID) {
+        return SocketConnection.sockets.get(sessionID);
     }
     static getSessionCookie(socket) {
         var _a;
