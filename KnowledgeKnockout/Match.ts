@@ -5,7 +5,7 @@ export class Match {
     public constructor(sockets: socketio.Socket[]) {
         this.sockets = sockets;
         setInterval(this.update.bind(this), 1000 / 64);
-        sockets.forEach(socket => socket.on('msg', (msg) => { console.log(msg); }));
+        sockets.forEach(socket => socket.on('msg', console.log));
     }
     private update() {
         this.sockets.forEach(socket => socket.emit('kztovl', 'hi'));
