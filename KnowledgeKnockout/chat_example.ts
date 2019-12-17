@@ -14,5 +14,9 @@ export class ChatExample {
                 ChatExample.sockets.get(sessID)?.on('chat', msg => ChatExample.sockets.forEach(socket => socket?.emit('chat', JSON.stringify({ msg, username: sessID }))));
             }
         }
+
+        for (let sessID of ChatExample.sockets.keys()) {
+            if (!SocketConnection.sockets.get(sessID)) ChatExample.sockets.delete(sessID);
+        }
     }
 }
