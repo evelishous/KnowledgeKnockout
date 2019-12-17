@@ -2,7 +2,6 @@ import * as compression from 'compression';
 import * as express from 'express';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
-import { MySQL } from './mysql/MySql';
 import { any_route_get } from './routes/any_route';
 import { example_route_get, example_route_post } from './routes/example_route';
 import { index_route_get } from './routes/index_route';
@@ -35,7 +34,9 @@ app.use(session({
 app.use((req, res, next) => {
     if (!req.session.initialized) {
         req.session.exampleUserName = Math.random();
-
+        req.session.user = {
+            name
+        };
         req.session.initialized = true;
     }
 

@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const mysql = require("mysql");
 const MySQLStore = require("express-mysql-session");
+const mysql = require("mysql");
 class MySQL {
     static initialize() {
         if (MySQL.initialized)
@@ -19,11 +19,7 @@ class MySQL {
     static query(query, inserts) {
         return new Promise((resolve, reject) => {
             MySQL.initialize();
-            MySQL.connection.query(query, inserts, (error, results, fields) => {
-                if (error)
-                    reject(error);
-                resolve(results);
-            });
+            MySQL.connection.query(query, inserts, (error, results, fields) => error ? reject(error) : resolve(results));
         });
     }
 }
@@ -37,10 +33,9 @@ MySQL.connectionConfig = {
     database: process.env.DB_NAME
 };
 MySQL.connectionConfigSessionStore = {
-    host: process.env.DB_HOST,
-    port: parseInt(process.env.DB_PORT),
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: process.env.DB_SessionStoreName
+    clearExpired: true,
+    checkExpirationInterval: 900000,
+    expiration: 86400000,
+    createDatabaseTable: true
 };
 //# sourceMappingURL=MySql.js.map
