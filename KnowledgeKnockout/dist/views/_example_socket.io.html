@@ -13,6 +13,7 @@
         const container = document.getElementById('container');
         const sendButton = document.getElementById('send');
         const messageTextInput = document.getElementById('message');
+
         socket.on('chat', msg => {
             msg = JSON.parse(msg);
             const paragraph = document.createElement('p');
@@ -20,6 +21,7 @@
             container.appendChild(paragraph);
             container.scrollTop = container.scrollHeight;
         });
+
         sendButton.addEventListener('click', () => {
             socket.emit('chat', messageTextInput.value);
             messageTextInput.value = '';
