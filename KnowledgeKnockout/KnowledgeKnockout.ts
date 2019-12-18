@@ -8,6 +8,7 @@ import { index_route_get } from './routes/index_route';
 import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { ChatExample } from './chat_example';
+import { add_question_route_get, add_question_route_post } from './routes/add_question_route';
 
 const app = express();
 
@@ -55,10 +56,8 @@ app.get('/example', example_route_get).post('/example', example_route_post);
 
 app.get('/socketiotest', socketiotest_get_route);
 
+app.get('/add-question', add_question_route_get).post('/add-question', add_question_route_post);
+
 app.get('*', any_route_get);
 
 ChatExample.initialize();
-
-
-
-// 
