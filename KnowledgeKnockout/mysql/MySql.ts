@@ -34,9 +34,9 @@ export class MySQL { // https://www.npmjs.com/package/mysql
         if (!MySQL.initialized) MySQL.initialize();
         return MySQL.sessionStore;
     }
-    public static query(query: string, inserts: string[]): Promise<any> { // https://www.npmjs.com/package/mysql#preparing-queries
+    public static query(query: string, inserts: any[]): Promise<any> { // https://www.npmjs.com/package/mysql#preparing-queries
         MySQL.initialize();
-        return new Promise((resolve, reject) => MySQL.connection.query(query, inserts, (error: MysqlError | null, results?: any, fields?: FieldInfo[]) => error ? reject(error) : resolve(results)));
+        return new Promise((resolve, reject) => MySQL.connection.query(query, inserts.map(i => i.toString()), (error: MysqlError | null, results?: any, fields?: FieldInfo[]) => error ? reject(error) : resolve(results)));
     }
 
     public static queryWithTransaction(query: string, inserts: string[]): Promise<any> {
