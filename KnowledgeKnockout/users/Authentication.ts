@@ -4,7 +4,7 @@ import { User } from './User';
 
 export class Authentication {
     public static async register(email: string, password: string) {
-        if (!await Authentication.userExists(email)) MySQL.query('INSERT INTO users (email, password, ...) VALUES (?, ?, ...)', [email, password]);
+        if (!await Authentication.userExists(email)) MySQL.query('INSERT INTO users (email, password, ...) VALUES (?, ?, ...)', [email, password/*, ...*/]);
     }
     public static async login(email: string, password: string) {
         let result = await MySQL.query('SELECT email, password FROM users WHERE email=?', [email]);
