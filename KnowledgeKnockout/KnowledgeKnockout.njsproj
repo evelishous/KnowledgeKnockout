@@ -48,6 +48,8 @@ SESSIONID=sid</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="questions\" />
+    <Folder Include="users_example\" />
     <Folder Include="socket_connection\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
@@ -66,6 +68,9 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="mysql\MySql.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="questions\Questions.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\add_question_route.ts" />
     <TypeScriptCompile Include="routes\any_route.ts">
       <SubType>Code</SubType>
@@ -80,6 +85,15 @@ SESSIONID=sid</Environment>
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="users_example\Authentication.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="users_example\BCrypt.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="users_example\User.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />
