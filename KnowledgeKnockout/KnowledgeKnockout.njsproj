@@ -10,7 +10,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=KK_User
 DB_PASS=KK_Pwd
-DB_NAME=KK_DBName
+DB_NAME=KK_DB
 DB_SessionStoreName=KK_DBSessStore
 SESSION_SECRET=eaO1LJRfcOZEiXMs
 SESSIONID=sid</Environment>
@@ -67,6 +67,7 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="mysql\MySql.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\add_question_route.ts" />
     <TypeScriptCompile Include="routes\any_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
