@@ -3,14 +3,14 @@ import * as mysql from 'mysql';
 import * as path from 'path';
 import { MySQL } from '../mysql/MySql';
 
-export function add_question_route_get(req: Request, res: Response) {
+export function add_question_route_get(req: Request, res: Response): void {
 	console.log(path.resolve('./dist/views/add_question.html'));
 
 	res.sendFile(path.resolve('./dist/views/add_question.html'));
 	//res.send(req.body);
 }
 
-export async function add_question_route_post(req: Request, res: Response) {
+export async function add_question_route_post(req: Request, res: Response): Promise<void> {
 	console.log(req.body);
 
 	let questionContent: string = req.body.content;
@@ -28,6 +28,7 @@ export async function add_question_route_post(req: Request, res: Response) {
 	}
 	catch (error) {
 		res.send(JSON.stringify({ success: false, error: error }));
+		return;
 	}
 
 	try {
