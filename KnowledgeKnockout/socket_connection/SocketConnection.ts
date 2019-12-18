@@ -7,7 +7,10 @@ export class SocketConnection {
     public static initialize(server: Server) {
         SocketConnection.io = socketio(server);
         SocketConnection.sockets = new Map();
-        SocketConnection.io.on('connection', socket => SocketConnection.sockets.set(SocketConnection.getSessionCookie(socket), socket));
+        SocketConnection.io.on('connection', socket => {
+            SocketConnection.sockets.set(SocketConnection.getSessionCookie(socket), socket);
+            socket.on('disconnect', () => SocketConnection.sockets.delete(SocketConnection.getSessionCookie(socket)));
+        });
     }
     public static get(sessionID: string): socketio.Socket | undefined {
         return SocketConnection.sockets.get(sessionID);

@@ -5,7 +5,10 @@ class SocketConnection {
     static initialize(server) {
         SocketConnection.io = socketio(server);
         SocketConnection.sockets = new Map();
-        SocketConnection.io.on('connection', socket => SocketConnection.sockets.set(SocketConnection.getSessionCookie(socket), socket));
+        SocketConnection.io.on('connection', socket => {
+            SocketConnection.sockets.set(SocketConnection.getSessionCookie(socket), socket);
+            socket.on('disconnect', () => SocketConnection.sockets.delete(SocketConnection.getSessionCookie(socket)));
+        });
     }
     static get(sessionID) {
         return SocketConnection.sockets.get(sessionID);

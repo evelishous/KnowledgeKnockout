@@ -14,6 +14,10 @@ class ChatExample {
                 (_a = ChatExample.sockets.get(sessID)) === null || _a === void 0 ? void 0 : _a.on('chat', msg => ChatExample.sockets.forEach(socket => { var _a; return (_a = socket) === null || _a === void 0 ? void 0 : _a.emit('chat', JSON.stringify({ msg, username: sessID })); }));
             }
         }
+        for (let sessID of ChatExample.sockets.keys()) {
+            if (!SocketConnection_1.SocketConnection.sockets.get(sessID))
+                ChatExample.sockets.delete(sessID);
+        }
     }
 }
 exports.ChatExample = ChatExample;
