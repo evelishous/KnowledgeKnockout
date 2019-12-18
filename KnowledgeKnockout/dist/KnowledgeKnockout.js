@@ -11,7 +11,7 @@ const example_route_1 = require("./routes/example_route");
 const index_route_1 = require("./routes/index_route");
 const socketiotest_get_route_1 = require("./routes/socketiotest_get_route");
 const SocketConnection_1 = require("./socket_connection/SocketConnection");
-const User_1 = require("./users/User");
+const User_1 = require("./users_example/User");
 const app = express();
 const server = app.listen(80);
 SocketConnection_1.SocketConnection.initialize(server);

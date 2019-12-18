@@ -49,7 +49,7 @@ SESSIONID=sid</Environment>
   <ItemGroup>
     <Folder Include="mysql\" />
     <Folder Include="questions\" />
-    <Folder Include="users\" />
+    <Folder Include="users_example\" />
     <Folder Include="socket_connection\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
@@ -87,13 +87,13 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users\Authentication.ts">
+    <TypeScriptCompile Include="users_example\Authentication.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users\BCrypt.ts">
+    <TypeScriptCompile Include="users_example\BCrypt.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users\User.ts">
+    <TypeScriptCompile Include="users_example\User.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />

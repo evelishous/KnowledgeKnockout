@@ -18,7 +18,7 @@ class MySQL {
     }
     static query(query, inserts) {
         MySQL.initialize();
-        return new Promise((resolve, reject) => MySQL.connection.query(query, inserts, (error, results, fields) => error ? reject(error) : resolve(results)));
+        return new Promise((resolve, reject) => MySQL.connection.query(query, inserts.map(i => i.toString()), (error, results, fields) => error ? reject(error) : resolve(results)));
     }
 }
 exports.MySQL = MySQL;
