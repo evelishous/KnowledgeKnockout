@@ -23,7 +23,8 @@ export async function add_question_route_post(req: Request, res: Response): Prom
 	try {
 		let sql: string = 'insert into question (content, blockId, topicId) values (?, ?, ?)';
 		let inserts: string[] = [questionContent, topicBlockId, topicId];
-		const results = await MySQL.query(sql, inserts);
+		//const results = await MySQL.query(sql, inserts);
+		const results = await MySQL.queryWithTransaction(sql, inserts);
 		lastQuestionId = results.insertId;
 	}
 	catch (error) {
@@ -34,7 +35,8 @@ export async function add_question_route_post(req: Request, res: Response): Prom
 	try {
 		let sql: string = 'insert into answer (questionId, content, isCorrect) values (?, ?, false), (?, ?, false), (?, ?, false), (?, ?, true)';
 		let inserts: any[] = [lastQuestionId, wrongAnswers[0], lastQuestionId, wrongAnswers[1], lastQuestionId, wrongAnswers[2], lastQuestionId, correctAnswer];
-		await MySQL.query(sql, inserts);
+		//await MySQL.query(sql, inserts);
+		await MySQL.queryWithTransaction(sql, inserts);
 		res.send(JSON.stringify({ success: true }));
 	}
 	catch (error) {
