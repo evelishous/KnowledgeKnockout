@@ -20,6 +20,33 @@ class MySQL {
         MySQL.initialize();
         return new Promise((resolve, reject) => MySQL.connection.query(query, inserts.map(i => i.toString()), (error, results, fields) => error ? reject(error) : resolve(results)));
     }
+    static queryWithTransaction(query, inserts) {
+        MySQL.initialize();
+        return new Promise((resolve, reject) => {
+            MySQL.connection.beginTransaction((error) => {
+                if (error) {
+                    reject(error);
+                }
+                else {
+                    MySQL.connection.query(query, inserts, (error, results, fields) => {
+                        if (error) {
+                            MySQL.connection.rollback(() => { reject(error); });
+                        }
+                        else {
+                            MySQL.connection.commit((error) => {
+                                if (error) {
+                                    MySQL.connection.rollback(() => { reject(error); });
+                                }
+                                else {
+                                    resolve(results, fields);
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    }
 }
 exports.MySQL = MySQL;
 MySQL.initialized = false;
