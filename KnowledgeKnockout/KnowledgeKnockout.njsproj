@@ -48,6 +48,7 @@ SESSIONID=sid</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="questions\" />
     <Folder Include="users\" />
     <Folder Include="socket_connection\" />
     <Folder Include="views\" />
@@ -65,6 +66,9 @@ SESSIONID=sid</Environment>
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="mysql\MySql.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="questions\Questions.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\add_question_route.ts" />
