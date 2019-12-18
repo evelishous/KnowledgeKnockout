@@ -38,7 +38,32 @@ export class MySQL { // https://www.npmjs.com/package/mysql
         MySQL.initialize();
         return new Promise((resolve, reject) => MySQL.connection.query(query, inserts.map(i => i.toString()), (error: MysqlError | null, results?: any, fields?: FieldInfo[]) => error ? reject(error) : resolve(results)));
     }
+    public static beginTransaction(): Promise<MysqlError> {
+        return new Promise((resolve, reject) => MySQL.connection.beginTransaction(error => error ? reject(error) : resolve()));
+    }
+    public static commit(): Promise<MysqlError> {
+        return new Promise((resolve, reject) => MySQL.connection.commit(error => error ? reject(error) : resolve()));
+    }
+    public static rollback(): Promise<MysqlError> {
+        return new Promise((resolve, reject) => MySQL.connection.commit(error => error ? reject(error) : resolve()));
+    }
+    public static async queryWithTransaction_test(query: string, inserts: string[]): Promise<any> {
+        MySQL.initialize();
 
+        try {
+            await MySQL.beginTransaction();
+
+            const results = await MySQL.query(query, inserts);
+
+            await MySQL.commit();
+
+            return results;
+        }
+        catch (error) {
+            await MySQL.rollback();
+            throw { error };
+        }
+    }
     public static queryWithTransaction(query: string, inserts: string[]): Promise<any> {
         MySQL.initialize();
         return new Promise((resolve: Function, reject: Function) => {
@@ -65,10 +90,8 @@ export class MySQL { // https://www.npmjs.com/package/mysql
                             }
                         );
                     }
-                    
                 }
             );
         });
     }
-
 }
