@@ -5,7 +5,7 @@ import { Connection, ConnectionConfig, FieldInfo, MysqlError } from 'mysql';
 export class MySQL { // https://www.npmjs.com/package/mysql
     private static connection: Connection;
     private static initialized: boolean = false;
-    public static _sessionStore: MySQLStore;
+    private static _sessionStore: MySQLStore;
     private static connectionConfig: ConnectionConfig = {
         host: process.env.DB_HOST,
         port: parseInt(process.env.DB_PORT + ''),
