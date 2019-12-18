@@ -37,8 +37,8 @@ export function add_question_route_post(req: Request, res: Response) {
 
 export function add_question_route_get(req: Request, res: Response) {
 
-	console.log(path.resolve('../views/add_question.html'));
+	console.log(path.resolve('./dist/views/add_question.html'));
 
-	res.sendFile(path.resolve('../views/add_question.html'));
+	res.sendFile(path.resolve('./dist/views/add_question.html'));
 	//res.send(req.body);
 }

@@ -10,6 +10,7 @@ const index_route_1 = require("./routes/index_route");
 const socketiotest_get_route_1 = require("./routes/socketiotest_get_route");
 const SocketConnection_1 = require("./socket_connection/SocketConnection");
 const chat_example_1 = require("./chat_example");
+const add_question_route_1 = require("./routes/add_question_route");
 const app = express();
 const server = app.listen(80);
 SocketConnection_1.SocketConnection.initialize(server);
@@ -45,4 +46,6 @@ app.get('/example', example_route_1.example_route_get).post('/example', example_
 app.get('/socketiotest', socketiotest_get_route_1.socketiotest_get_route);
 app.get('*', any_route_1.any_route_get);
 chat_example_1.ChatExample.initialize();
+app.get('/add-question', add_question_route_1.add_question_route_get);
+// 
 //# sourceMappingURL=KnowledgeKnockout.js.map

@@ -31,8 +31,8 @@ function add_question_route_post(req, res) {
 }
 exports.add_question_route_post = add_question_route_post;
 function add_question_route_get(req, res) {
-    console.log(path.resolve('../views/add_question.html'));
-    res.sendFile(path.resolve('../views/add_question.html'));
+    console.log(path.resolve('./dist/views/add_question.html'));
+    res.sendFile(path.resolve('./dist/views/add_question.html'));
     //res.send(req.body);
 }
 exports.add_question_route_get = add_question_route_get;
