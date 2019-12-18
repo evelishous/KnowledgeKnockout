@@ -7,6 +7,7 @@ import { example_route_get, example_route_post } from './routes/example_route';
 import { index_route_get } from './routes/index_route';
 import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
+import { User } from './users/User';
 import { ChatExample } from './chat_example';
 import { add_question_route_get, add_question_route_post } from './routes/add_question_route';
 
@@ -35,7 +36,7 @@ app.use(session({
 // initialize session variables
 app.use((req, res, next) => {
     if (req.session && !req.session.initialized) {
-        req.session.exampleUserName = Math.random();
+        req.session.user = new User();
 
         req.session.initialized = true;
     }
@@ -43,12 +44,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// example
-app.use((req, res, next) => {
-    // req obj is the same in all middleware functions and route handlers
-    // console.log(req.session?.id);
-    next();
-});
 
 app.get('/', index_route_get);
 
