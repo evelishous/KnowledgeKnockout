@@ -47,7 +47,7 @@ export class MySQL { // https://www.npmjs.com/package/mysql
                     if (error) {
                         reject(error);
                     } else {
-                        MySQL.connection.query(query, inserts,
+                        MySQL.connection.query(query, inserts.map(i => i.toString()),
                             (error: MysqlError | null, results?: any, fields?: FieldInfo[]) => {
                                 if (error) {
                                     MySQL.connection.rollback(() => { reject(error); });
