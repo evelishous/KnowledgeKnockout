@@ -4,7 +4,8 @@
 
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-    <div id="container"></div>
+    <div id="container" style="width: 500px;height: 500px;overflow-y: scroll;overflow-wrap: break-word;">
+    </div>
     <input type="text" id="message" />
     <input type="button" id="send" value="send" />
     <script>
@@ -20,6 +21,7 @@
             const paragraph = document.createElement('p');
             paragraph.textContent = `${msg.username}: ${msg.msg}`;
             container.appendChild(paragraph);
+            container.scrollTop = container.scrollHeight;
         });
 
         sendButton.addEventListener('click', () => {
