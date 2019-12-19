@@ -10,6 +10,7 @@ import { index_route_get } from './routes/index_route';
 import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { User } from './users_example/User';
+import { Questions } from './questions/Questions';
 
 const app = express();
 
@@ -56,3 +57,7 @@ app.get('/add-question', add_question_route_get).post('/add-question', add_quest
 app.get('*', any_route_get);
 
 ChatExample.initialize();
+
+
+// error database not selected
+Questions.test(4, 1);
