@@ -38,13 +38,13 @@ export class MySQL { // https://www.npmjs.com/package/mysql
         MySQL.initialize();
         return new Promise((resolve, reject) => MySQL.connection.query(query, inserts.map(i => i.toString()), (error: MysqlError | null, results?: any, fields?: FieldInfo[]) => error ? reject(error) : resolve(results)));
     }
-    public static beginTransaction(): Promise<MysqlError> {
+    public static beginTransaction(): Promise<MysqlError | void> {
         return new Promise((resolve, reject) => MySQL.connection.beginTransaction(error => error ? reject(error) : resolve()));
     }
-    public static commit(): Promise<MysqlError> {
+    public static commit(): Promise<MysqlError | void> {
         return new Promise((resolve, reject) => MySQL.connection.commit(error => error ? reject(error) : resolve()));
     }
-    public static rollback(): Promise<MysqlError> {
+    public static rollback(): Promise<MysqlError | void> {
         return new Promise((resolve, reject) => MySQL.connection.commit(error => error ? reject(error) : resolve()));
     }
     public static async queryWithTransaction(query: string, inserts: string[]): Promise<any> {
@@ -60,7 +60,13 @@ export class MySQL { // https://www.npmjs.com/package/mysql
             return results;
         }
         catch (error) {
-            await MySQL.rollback();
+            try {
+                await MySQL.rollback();
+            }
+            catch (err) {
+                throw { err };
+            }
+
             throw { error };
         }
     }
