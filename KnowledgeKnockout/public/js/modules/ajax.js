@@ -19,11 +19,11 @@ export class Ajax {
             };
 
             xhr.onerror = function () {
-                reject(this.status);
+                reject(`Fehler! Request Status: ${this.statusText}`);
             };
 
             xhr.onabort = function () {
-                reject(this.status);
+                reject('Vorgang abgebrochen.');
             };
 
             if (data !== null)
