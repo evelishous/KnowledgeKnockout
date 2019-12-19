@@ -23,7 +23,7 @@ form.onsubmit = async function (e) {
     };
 
     try {
-        const response = await Ajax.post('/add-question', JSON.stringify(data), { 'Content-Type': 'application/json' });
+        const response = JSON.parse(await Ajax.post('/add-question', JSON.stringify(data), { 'Content-Type': 'application/json' }));
 
         if (response.success === true) {
             let reset = confirm('Hat geklappt! Formular resetten?');
