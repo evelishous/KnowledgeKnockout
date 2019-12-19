@@ -41,6 +41,12 @@ SESSIONID=sid</Environment>
   <ItemGroup>
     <None Include="KnowledgeKnockout.ts" />
     <Content Include="package.json" />
+    <Content Include="public\js\add_question.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\js\modules\ajax.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\test.txt">
       <SubType>Code</SubType>
     </Content>
@@ -48,6 +54,8 @@ SESSIONID=sid</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="public\js\" />
+    <Folder Include="public\js\modules\" />
     <Folder Include="questions\" />
     <Folder Include="users_example\" />
     <Folder Include="socket_connection\" />
