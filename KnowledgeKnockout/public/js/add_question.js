@@ -13,6 +13,8 @@ const secondsInput = document.getElementById('secondsToAnswer');
 form.onsubmit = async e => {
     e.preventDefault();
 
+    let errorString = '';
+
     let data = {
         content: textArea.value,
         wrongAnswer01: wrongAnswer01.value,
@@ -23,6 +25,36 @@ form.onsubmit = async e => {
         topicId: topicSelect.options[topicSelect.selectedIndex].value,
         seconds: secondsInput.value
     };
+
+    // validate input
+
+    if (data.content === '') {
+        errorString += "Bitte gib eine Frage ein!\n";
+    }
+
+    if (data.wrongAnswer01 === '') {
+        errorString += "Bitte falsche Antwort 1 eingeben!\n";
+    }
+
+    if (data.wrongAnswer02 === '') {
+        errorString += "Bitte falsche Antwort 2 eingeben!\n";
+    }
+
+    if (data.wrongAnswer03 === '') {
+        errorString += "Bitte falsche Antwort 3 eingeben!\n";
+    }
+
+    if (data.correctAnswer === '') {
+        errorString += "Bitte die korrekte Antwort eingeben!\n"
+    }
+
+    if (data.seconds === '') {
+        errorString += "Bitte die maximale Antwortzeit eingeben!\n"
+    }
+
+    if (errorString.length !== 0) {
+        return alert(errorString);
+    }
 
     try {
         const response = JSON.parse(await Ajax.post('/add-question', JSON.stringify(data), { 'Content-Type': 'application/json' }));
