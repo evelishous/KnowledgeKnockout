@@ -47,13 +47,13 @@ export class MySQL { // https://www.npmjs.com/package/mysql
     public static rollback(): Promise<MysqlError | void> {
         return new Promise((resolve, reject) => MySQL.connection.commit(error => error ? reject(error) : resolve()));
     }
-    public static async queryWithTransaction(query: string, inserts: string[]): Promise<any> {
+    public static async queryWithTransaction(query: string, inserts: any[]): Promise<any> {
         MySQL.initialize();
 
         try {
             await MySQL.beginTransaction();
 
-            const results = await MySQL.query(query, inserts);
+            const results = await MySQL.query(query, inserts.map(i => i.toString()));
 
             await MySQL.commit();
 

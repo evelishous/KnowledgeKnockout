@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import * as mysql from 'mysql';
 import * as path from 'path';
 import { MySQL } from '../mysql/MySql';
 
