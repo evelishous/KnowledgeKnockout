@@ -1,21 +1,68 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>training test</title>
 </head>
 <body>
+    <select id="topic">
+        <option value="1">HTML und CSS</option>
+        <option value="2">JavaScript</option>
+        <option value="3">PHP und MySQL</option>
+        <option value="4">Unity</option>
+        <option value="5">C#</option>
+        <option value="6">MonoGame</option>
+        <option value="7">Photoshop</option>
+        <option value="8">Blender</option>
+        <option value="9">Premiere</option>
+    </select>
+
+    <input type="button" id="requestQuestion" />
+
+    <div id="questionContainer" style="display: none">
+        <p id="question">egerd</p>
+
+        <fieldset>
+            <input type="radio" id="q0" name="answer" value="0">
+            <label for="q0" id="q0Label"></label>
+            <input type="radio" id="q1" name="answer" value="1">
+            <label for="q1" id="q1Label"></label>
+            <input type="radio" id="q2" name="answer" value="2">
+            <label for="q2" id="q2Label"></label>
+            <input type="radio" id="q3" name="answer" value="3">
+            <label for="q3" id="q3Label"></label>
+        </fieldset>
+    </div>
+
     <script>
 
-        const response = await fetch('/training', {
-            method: 'post',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: 'topic=7'
+        async function testA(aId, qId) {
+            let response = await fetch('/training', {
+                method: 'post',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `answer=${aId}&qId=${qId}`
+            });
+            return await response.json();
+        }
+
+        async function getQ(topic) {
+            let response = await fetch('/training', {
+                method: 'post',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: 'topic=' + topic
+            });
+            return await response.json();
+        }
+
+        document.getElementById('requestQuestion').addEventListener('click', async () => {
+            const q = await getQ(document.getElementById('topic').value);
+            document.getElementById('question').textContent = q.q;
+            document.getElementById('q0Label').textContent = q.answers[0];
+            document.getElementById('q1Label').textContent = q.answers[1];
+            document.getElementById('q2Label').textContent = q.answers[2];
+            document.getElementById('q3Label').textContent = q.answers[3];
         });
 
-
-
-        document.body.appendChild();
 
     </script>
 </body>

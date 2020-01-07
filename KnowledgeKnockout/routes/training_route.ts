@@ -10,7 +10,7 @@ export async function training_route_post(req: Request, res: Response) {
         const question = await Questions.getQuestion(req.body.topic);
         const answers = await Questions.getAnswers(question.id);
 
-        res.send({ q: question.content, a1: answers[0].content, a2: answers[1].content, a3: answers[2].content, a4: answers[3].content });
+        res.send({ q: question.content, answers: answers.map(a => a.content) });
     } else if (req.body.answer && req.body.qId) {
         res.send(await Questions.test(req.body.answer, req.body.qId));
     }
