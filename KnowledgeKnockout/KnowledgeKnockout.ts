@@ -63,8 +63,6 @@ app.get('*', any_route_get);
 ChatExample.initialize();
 
 
-//Questions.test(4, 1).then(console.log);
-//Questions.getQuestion(9).then(console.log);
-//Questions.getAnswers(5).then(console.log);
-
-MySQL.query('SELECT * FROM answer WHERE questionId=5;').then(console.log);
+Questions.test(4, 1).then(console.log);
+Questions.getQuestion(9).then(console.log);
+Questions.getAnswers(5).then(console.log);

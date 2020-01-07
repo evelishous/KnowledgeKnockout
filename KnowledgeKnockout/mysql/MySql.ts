@@ -13,12 +13,6 @@ export class MySQL { // https://www.npmjs.com/package/mysql
         password: process.env.DB_PASS,
         database: process.env.DB_NAME
     }
-    private static connectionConfigTest: ConnectionConfig = {
-        host: 'localhost',
-        port: parseInt(process.env.DB_PORT + ''),
-        user: 'root',
-        database: 'test'
-    }
     private static connectionConfigSessionStore: any = {
         clearExpired: true,
         checkExpirationInterval: 900000,
@@ -28,7 +22,7 @@ export class MySQL { // https://www.npmjs.com/package/mysql
     private static initialize(): void {
         if (MySQL.initialized) return;
 
-        MySQL.connection = mysql.createConnection(MySQL.connectionConfigTest);
+        MySQL.connection = mysql.createConnection(MySQL.connectionConfig);
 
         MySQL.connection.connect();
 
