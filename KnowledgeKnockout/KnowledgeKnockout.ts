@@ -59,5 +59,4 @@ app.get('*', any_route_get);
 ChatExample.initialize();
 
 
-// error database not selected
-Questions.test(4, 1);
+Questions.test(4, 10).then(console.log);
