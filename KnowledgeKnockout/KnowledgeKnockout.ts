@@ -61,8 +61,3 @@ app.get('/training', training_route_get).post('/training', training_route_post);
 app.get('*', any_route_get);
 
 ChatExample.initialize();
-
-
-Questions.test(4, 1).then(console.log);
-Questions.getQuestion(9).then(console.log);
-Questions.getAnswers(5).then(console.log);

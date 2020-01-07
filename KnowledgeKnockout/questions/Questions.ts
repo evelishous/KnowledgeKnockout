@@ -1,7 +1,7 @@
+import { randomizeArray } from '../helpers';
 import { MySQL } from '../mysql/MySql';
-import { Question } from './Question';
 import { Answer } from './Answer';
-import { parse } from 'url';
+import { Question } from './Question';
 
 export class Questions {
     public static async test(answerId: number, questionId: number): Promise<boolean> {
@@ -26,9 +26,7 @@ export class Questions {
     public static async getAnswers(questionId: number): Promise<Answer[]> {
         try {
             const result = await MySQL.query('SELECT * FROM answer WHERE questionId=?', [questionId]);
-            console.log(questionId, result.length === 0);
-            //console.log(result.map((a: Answer) => new Answer(a.id, a.questionId, a.content, a.isCorrect, a.imgSrc)));
-            return result.map((a: Answer) => new Answer(a.id, a.questionId, a.content, a.isCorrect, a.imgSrc));
+            return randomizeArray(result.map((a: Answer) => new Answer(a.id, a.questionId, a.content, a.isCorrect, a.imgSrc)));
         }
         catch (error) {
             console.log(error);
