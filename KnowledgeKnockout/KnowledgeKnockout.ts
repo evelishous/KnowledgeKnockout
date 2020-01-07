@@ -59,4 +59,5 @@ app.get('*', any_route_get);
 ChatExample.initialize();
 
 
-Questions.test(4, 10).then(console.log);
+Questions.test(4, 1).then(console.log);
+Questions.getQuestion(9).then(console.log);

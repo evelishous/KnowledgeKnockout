@@ -73,6 +73,9 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="mysql\MySql.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="questions\Question.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="questions\Questions.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
