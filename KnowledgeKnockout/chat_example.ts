@@ -3,19 +3,19 @@ import { SocketConnection } from './socket_connection/SocketConnection';
 
 export class ChatExample {
     private static sockets: Map<string, Socket | undefined>;
-    public static initialize() {
+    public static initialize(): void {
         ChatExample.sockets = new Map();
         setInterval(ChatExample.update, 100);
     }
-    private static update() {
-        for (let sessID of SocketConnection.sockets.keys()) {
+    private static update(): void { // add new sockets, remove old sockets
+        for (const sessID of SocketConnection.sockets.keys()) {
             if (!ChatExample.sockets.get(sessID)) {
                 ChatExample.sockets.set(sessID, SocketConnection.sockets.get(sessID));
                 ChatExample.sockets.get(sessID)?.on('chat', msg => ChatExample.sockets.forEach(socket => socket?.emit('chat', JSON.stringify({ msg, username: sessID }))));
             }
         }
 
-        for (let sessID of ChatExample.sockets.keys()) {
+        for (const sessID of ChatExample.sockets.keys()) {
             if (!SocketConnection.sockets.get(sessID)) ChatExample.sockets.delete(sessID);
         }
     }
