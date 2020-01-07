@@ -4,6 +4,7 @@ import * as session from 'express-session';
 import * as helmet from 'helmet';
 import { ChatExample } from './chat_example';
 import { add_question_route_get, add_question_route_post } from './routes/add_question_route';
+import { registry_route_get, registry_route_post } from './routes/registry_route';
 import { any_route_get } from './routes/any_route';
 import { example_route_get, example_route_post } from './routes/example_route';
 import { index_route_get } from './routes/index_route';
@@ -52,6 +53,8 @@ app.get('/example', example_route_get).post('/example', example_route_post);
 app.get('/socketiotest', socketiotest_get_route);
 
 app.get('/add-question', add_question_route_get).post('/add-question', add_question_route_post);
+
+app.get('/registry', registry_route_get).post('/registry', registry_route_post);
 
 app.get('*', any_route_get);
 
