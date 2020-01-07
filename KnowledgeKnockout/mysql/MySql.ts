@@ -60,14 +60,9 @@ export class MySQL { // https://www.npmjs.com/package/mysql
             return results;
         }
         catch (error) {
-            try {
-                await MySQL.rollback();
-            }
-            catch (err) {
-                throw { err };
-            }
+            await MySQL.rollback();
 
-            throw { error };
+            throw error;
         }
     }
 }
