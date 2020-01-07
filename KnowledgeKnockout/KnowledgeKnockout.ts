@@ -55,4 +55,4 @@ app.get('/add-question', add_question_route_get).post('/add-question', add_quest
 
 app.get('*', any_route_get);
 
-ChatExample.initialize();
+
