@@ -1,1 +1,1 @@
-export const randStr = (length: number) => [...Array(length)].map(i => (~~(Math.random() * 36)).toString(36)).join('');
+export const randStr = (length: number): string => [...Array(length)].map(i => (~~(Math.random() * 36)).toString(36)).join('');
