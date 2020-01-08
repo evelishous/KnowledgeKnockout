@@ -2,23 +2,30 @@ import { MySQL } from "../mysql/MySql";
 import { Avatar } from "./Avatar";
 
 export class User {
-    private _id: number = 0;
+    private _id: number;
     private _name: string;
     private _email: string;
+    private _progress: number;
     public avatars: Avatar[] = [];
-    public constructor(id: number, name: string, email: string) {
+    public constructor(id: number, name: string, email: string, progress: number) {
+        this._id = id;
         this._name = name;
         this._email = email;
+        this._progress = progress;
 
         MySQL.query('SELECT * FROM avatar WHERE userId').then(result => result.forEach((avatar: any) => this.avatars.push(new Avatar(avatar.id, avatar.level, avatar.topicBlockId))));
     }
     public set name(val: string) {
-        MySQL.query('UPDATE user SET name=?', [val]);
+        MySQL.query('UPDATE user SET name=? WHERE name=?', [val, this._name]);
         this._name = val;
     }
     public set email(val: string) {
-        MySQL.query('UPDATE user SET name=?', [val]);
+        MySQL.query('UPDATE user SET email=? WHERE name=?', [val, this._name]);
         this._email = val;
+    }
+    public set progress(val: number) {
+        MySQL.query('UPDATE user SET progress=? WHERE name=?', [val, this._name]);
+        this._progress = val;
     }
     public get id(): number {
         return this._id;
@@ -28,5 +35,8 @@ export class User {
     }
     public get email(): string {
         return this._email;
+    }
+    public get progress(): number {
+        return this._progress;
     }
 }

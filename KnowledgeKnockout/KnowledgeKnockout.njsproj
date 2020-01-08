@@ -53,6 +53,9 @@ SESSIONID=sid</Environment>
     <Content Include="public\js\add_question.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="public\js\login.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\js\registration.js">
       <SubType>Code</SubType>
     </Content>
@@ -104,13 +107,13 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="routes\any_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="routes\example_route.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\login_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\logout_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\registration_route.ts" />

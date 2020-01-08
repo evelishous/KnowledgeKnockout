@@ -28,7 +28,7 @@ export class Authentication {
             console.log(result);
             if (!result[0].password) throw 'no password';
 
-            if (await BCrypt.match(password, result[0].password)) return new User(result[0].id, result[0].name, result[0].email);
+            if (await BCrypt.match(password, result[0].password)) return new User(result[0].id, result[0].name, result[0].email, result[0].progress);
         }
         catch (error) {
             console.error(error);
