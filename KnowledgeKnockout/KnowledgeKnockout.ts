@@ -2,15 +2,16 @@ import * as compression from 'compression';
 import * as express from 'express';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
-import { ChatExample } from './chat_example';
 import { add_question_route_get, add_question_route_post } from './routes/add_question_route';
 import { any_route_get } from './routes/any_route';
 import { example_route_get, example_route_post } from './routes/example_route';
 import { index_route_get } from './routes/index_route';
+import { login_route_get, login_route_post } from './routes/login_route';
+import { register_route_get, register_route_post } from './routes/registration_route';
 import { socketiotest_get_route } from './routes/socketiotest_get_route';
+import { training_route_get, training_route_post } from './routes/training_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
-import { User } from './users_example/User';
-import { Questions } from './questions/Questions';
+
 
 const app = express();
 
@@ -37,7 +38,7 @@ app.use(session({
 // initialize session variables
 app.use((req, res, next) => {
     if (req.session && !req.session.initialized) {
-        req.session.user = new User();
+        //req.session.user = new User();
 
         req.session.initialized = true;
     }
@@ -54,9 +55,12 @@ app.get('/socketiotest', socketiotest_get_route);
 
 app.get('/add-question', add_question_route_get).post('/add-question', add_question_route_post);
 
+app.get('/register', register_route_get).post('/register', register_route_post);
+
+//app.get('/login', login_route_get).post('/login', login_route_post);
+
+app.get('/training', training_route_get).post('/training', training_route_post);
+
 app.get('*', any_route_get);
 
-ChatExample.initialize();
 
-
-Questions.test(4, 10).then(console.log);
