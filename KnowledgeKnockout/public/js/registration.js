@@ -1,7 +1,6 @@
 import { Ajax } from './modules/ajax.js';
 
 const form = document.getElementById('registrationUploadForm');
-const textArea = document.getElementById('registrationContent');
 const name = document.getElementById('name');
 const email = document.getElementById('email');
 const password = document.getElementById('password');

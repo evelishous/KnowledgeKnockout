@@ -60,10 +60,10 @@ SESSIONID=sid</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="user\" />
     <Folder Include="public\js\" />
     <Folder Include="public\js\modules\" />
     <Folder Include="questions\" />
-    <Folder Include="users_example\" />
     <Folder Include="socket_connection\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
@@ -98,7 +98,10 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="routes\index_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="routes\registry_route.ts" />
+    <TypeScriptCompile Include="routes\login_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\registration_route.ts" />
     <TypeScriptCompile Include="routes\socketiotest_get_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -108,13 +111,16 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users_example\Authentication.ts">
+    <TypeScriptCompile Include="user\Authentication.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users_example\BCrypt.ts">
+    <TypeScriptCompile Include="user\Avatar.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users_example\User.ts">
+    <TypeScriptCompile Include="views\BCrypt.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="user\User.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />
