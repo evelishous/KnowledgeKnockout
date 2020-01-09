@@ -19,7 +19,7 @@ export async function login_route_post(req: Request, res: Response) {
 export async function login_route_encrypted(req: Request, res: Response) {
 
     if (req.body.action && req.body.action == 'confirm' && req.session && !req.session.user) {
-        req.session.user = await Authentication.login(req.body.name, req.body.password);
+        req.session.user = await Authentication.confirm_login(req.body.name);
         res.send(!!req.session.user);
     } else {
         const pwHash = await MySQL.queryWithTransaction('SELECT password from kk_db.user WHERE name=?', [req.body.name]);
