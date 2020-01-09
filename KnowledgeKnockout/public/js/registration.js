@@ -1,62 +1,48 @@
-import { Ajax } from './modules/ajax.js';
-
-const form = document.getElementById('registrationUploadForm');
 const name = document.getElementById('name');
-const email = document.getElementById('email');
 const password = document.getElementById('password');
+const email = document.getElementById('email');
+const submitBtn = document.getElementById('submit');
 
-form.onsubmit = async e => {
+submitBtn.onclick = async e => {
     e.preventDefault();
 
     let errorString = '';
 
     let data = {
-        content: textArea.value,
         name: name.value,
-        email: email.value,
         password: password.value,
+        email: email.value
     };
 
     // validate input
 
-    if (data.content === '') {
-        errorString += "Bitte gib eine Frage ein!\n";
-    }
-
     if (data.name === '') {
-        errorString += "Bitte Name eingeben";
-    }
-
-    if (data.email === '') {
-        errorString += "Bitte E-Mail eingeben";
+        errorString += 'Bitte Name eingeben\n';
     }
 
     if (data.password === '') {
-        errorString += "Bitte Password eingeben";
+        errorString += 'Bitte Password eingeben\n';
+    }
+
+    if (data.email === '') {
+        errorString += 'Bitte Email eingeben';
     }
 
     if (errorString.length !== 0) {
         return alert(errorString);
     }
+    else {
+        try {
+            const res = await fetch('/register', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
 
-    try {
-        const response = JSON.parse(await Ajax.post('/registration', JSON.stringify(data), { 'Content-Type': 'application/json' }));
+            alert(await res.json());
 
-        if (response.success === true) {
-            let reset = confirm('Hat geklappt! Formular resetten?');
-
-            if (reset === true) {
-                textArea.value = '';
-                name.value = '';
-                email.value = '';
-                password.value = '';
-            }
-        } else {
-            throw response.error;
+        } catch (error) {
+            alert(`Ein Fehler ist aufgetreten: ${error}`);
         }
-    } catch (error) {
-        alert(`Ein Fehler ist aufgetreten: ${error}`);
     }
-
-
 };
