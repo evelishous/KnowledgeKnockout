@@ -12,7 +12,7 @@ export class Authentication {
             const id = (await MySQL.query('SELECT id FROM user WHERE name=?', [name]))[0].id;
 
             for (let i = 1; i <= 9; i++) {
-                await MySQL.queryWithTransaction('INSERT INTO avatar(userId, level, topicBlockId) VALUES(?, 0, ?)', [id, i]);
+                await MySQL.query(`INSERT INTO avatar(userId, level, topicId) VALUES(${id}, 0, ${i})`);
             }
 
             return await Authentication.login(name, password);

@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import { resolve } from 'path';
 import { Questions } from '../questions/Questions';
-import { Avatar } from '../user/Avatar';
 import { User } from '../user/User';
 
 export async function training_route_get(req: Request, res: Response) {
@@ -22,6 +21,7 @@ export async function training_route_post(req: Request, res: Response) {
             const question = await Questions.getQuestion(req.body.qId);
             const avatar = (<User>req.session.user).avatars.find(a => a.topicBlockId === question.topicId);
             if (avatar) avatar.level += 0.001 * question.secondsToSolve;
+            console.log(avatar?.level, req.session?.user);
         }
 
         res.send(correct);
