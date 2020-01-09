@@ -9,11 +9,11 @@ export class Authentication {
 
             await MySQL.queryWithTransaction('INSERT INTO user(name, email, password) VALUES(?, ?, ?)', [name, email, await BCrypt.hash(password)]);
 
-            const result = await MySQL.query('SELECT id FROM user WHERE name=?', [name]);
+            const id = (await MySQL.query('SELECT id FROM user WHERE name=?', [name]))[0].id;
 
-            await MySQL.queryWithTransaction('INSERT INTO avatar(userId, level, topicBlockId) VALUES(?, 0, 1)', [result[0].id]);
-            await MySQL.queryWithTransaction('INSERT INTO avatar(userId, level, topicBlockId) VALUES(?, 0, 2)', [result[0].id]);
-            await MySQL.queryWithTransaction('INSERT INTO avatar(userId, level, topicBlockId) VALUES(?, 0, 3)', [result[0].id]);
+            for (let i = 1; i <= 9; i++) {
+                await MySQL.queryWithTransaction('INSERT INTO avatar(userId, level, topicBlockId) VALUES(?, 0, ?)', [id, i]);
+            }
 
             return await Authentication.login(name, password);
         }
