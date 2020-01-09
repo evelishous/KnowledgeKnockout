@@ -1,21 +1,20 @@
-<html> 
-    <head>
-        <link rel="stylesheet" href="../css/loginStyle.css">
-        <title> #{Login} </title>
-    </head>    
-        <body id="loginUploadForm">
-            <div>
-                <h1>Login</h1>
-                
-                    <label for="email">E-Mail eingeben:</label><br>
-                    <input type="email" id="email"/><br><br>
+<html>
+<head>
+    <link rel="stylesheet" href="../css/loginStyle.css">
+    <title> #{Login} </title>
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
 
-                    <label for="password">Passwort eingeben:<br></label>
-                    <input type="password" id="password"/><br><br><br>
-                    <button class="button buttonSubmit">Einloggen</button>
-                
-            </div>
-            <script type="module" src="js/login.js"></script>
-        </body>
-    
+        <label for="name">Name eingeben:</label><br>
+        <input type="text" id="name" /><br><br>
+
+        <label for="password">Passwort eingeben:<br></label>
+        <input type="password" id="password" /><br><br><br>
+        <button id="submit">Einloggen</button>
+
+    </div>
+    <script type="module" src="js/login.js"></script>
+</body>
 </html>

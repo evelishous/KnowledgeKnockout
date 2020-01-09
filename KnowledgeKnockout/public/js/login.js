@@ -1,6 +1,5 @@
 const name = document.getElementById('name');
 const password = document.getElementById('password');
-const email = document.getElementById('email');
 const submitBtn = document.getElementById('submit');
 
 submitBtn.onclick = async e => {
@@ -10,8 +9,7 @@ submitBtn.onclick = async e => {
 
     let data = {
         name: name.value,
-        password: password.value,
-        email: email.value
+        password: password.value
     };
 
     // validate input
@@ -24,16 +22,13 @@ submitBtn.onclick = async e => {
         errorString += 'Bitte Password eingeben\n';
     }
 
-    if (data.email === '') {
-        errorString += 'Bitte Email eingeben';
-    }
 
     if (errorString.length !== 0) {
         return alert(errorString);
     }
     else {
         try {
-            const res = await fetch('/register', {
+            const res = await fetch('/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
