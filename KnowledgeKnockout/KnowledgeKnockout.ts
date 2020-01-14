@@ -2,6 +2,7 @@ import * as compression from 'compression';
 import * as express from 'express';
 import * as session from 'express-session';
 import * as helmet from 'helmet';
+import { resolve } from 'path';
 import { add_question_route_get, add_question_route_post } from './routes/add_question_route';
 import { any_route_get } from './routes/any_route';
 import { index_route_get } from './routes/index_route';
@@ -12,7 +13,6 @@ import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { training_route_get, training_route_post } from './routes/training_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 
-
 const app = express();
 
 const server = app.listen(80);
@@ -21,7 +21,9 @@ SocketConnection.initialize(server);
 
 app.use(helmet());
 app.use(compression());
+
 app.use(express.static('public'));
+app.use('/bcrypt', express.static(resolve('./node_modules/bcryptjs/dist/')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
