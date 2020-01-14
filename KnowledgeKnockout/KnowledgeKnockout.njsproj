@@ -39,10 +39,10 @@ SESSIONID=sid</Environment>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="views\chat.html">
+    <None Include="KnowledgeKnockout.ts" />
+    <Content Include="build.js">
       <SubType>Code</SubType>
     </Content>
-    <None Include="KnowledgeKnockout.ts" />
     <Content Include="package.json" />
     <Content Include="public\HMTL_CSS\css\loginStyle.css" />
     <Content Include="public\HMTL_CSS\css\mainStyle.css" />
@@ -92,9 +92,9 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="chat_example.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Fight\fight.ts" />
-    <TypeScriptCompile Include="Fight\fightManager.ts" />
-    <TypeScriptCompile Include="Fight\player.ts" />
+    <TypeScriptCompile Include="Fight\Fight.ts" />
+    <TypeScriptCompile Include="Fight\FightManager.ts" />
+    <TypeScriptCompile Include="Fight\Player.ts" />
     <TypeScriptCompile Include="helpers.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

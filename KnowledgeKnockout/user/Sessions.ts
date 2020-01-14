@@ -1,5 +1,5 @@
 export class Sessions {
-    private static sessions: Map<string, any>;
+    private static sessions: Map<string, any> = new Map();
     public static get(sessionID: string): any {
         return Sessions.sessions.get(sessionID);
     }

@@ -14,10 +14,10 @@ export class SocketConnection {
             socket.on('disconnect', () => SocketConnection.sockets.delete(SocketConnection.getSessionId(socket)));
 
             socket.on('chatmessage', msg => {
-                if (!(<User>Sessions.get(SocketConnection.getSessionId(socket)).user).isInMatch) {
+                if (Sessions.get(SocketConnection.getSessionId(socket)) && !(<User>Sessions.get(SocketConnection.getSessionId(socket)).user)?.isInMatch) {
                     for (const [sessionID, socket] of SocketConnection.sockets) {
                         const user = <User>Sessions.get(sessionID).user;
-                        if (!user.isInMatch) socket.emit('chatmessage', { msg, user: user.name });
+                        if (!user.isInMatch) socket.emit('chatmessage', { msg, user: (<any>user)._name });
                     }
                 }
             });

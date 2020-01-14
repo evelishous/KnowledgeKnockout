@@ -50,7 +50,7 @@ app.get('/', index_route_get);
 
 app.get('/socketiotest', socketiotest_get_route);
 
-app.get('/add-question', add_question_route_get).post('/add-question', add_question_route_post);
+app.get('/add-question', Authentication.loginCheck, add_question_route_get).post('/add-question', add_question_route_post);
 
 app.get('/register', registration_route_get).post('/register', registration_route_post);
 
