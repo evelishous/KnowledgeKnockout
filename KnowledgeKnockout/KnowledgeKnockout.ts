@@ -12,6 +12,7 @@ import { registration_route_get, registration_route_post } from './routes/regist
 import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { training_route_get, training_route_post } from './routes/training_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
+import { Authentication } from './user/Authentication';
 
 const app = express();
 
@@ -60,6 +61,6 @@ app.get('/register', registration_route_get).post('/register', registration_rout
 app.get('/login', login_route_get).post('/login', login_route_post);
 app.get('/logout', logout_route_get);
 
-app.get('/training', training_route_get).post('/training', training_route_post);
+app.get('/training', Authentication.loginCheck, training_route_get).post('/training', training_route_post);
 
 app.get('*', any_route_get);
