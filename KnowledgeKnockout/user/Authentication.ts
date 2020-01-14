@@ -1,3 +1,4 @@
+import { NextFunction, Request, Response } from 'express';
 import { MySQL } from '../mysql/MySql';
 import { BCrypt } from './BCrypt';
 import { User } from './User';
@@ -44,5 +45,9 @@ export class Authentication {
             console.error(error);
             return false;
         }
+    }
+    public static loginCheck(req: Request, res: Response, next: NextFunction): void {
+        if (req.session?.user) next();
+        else res.redirect('/login');
     }
 }

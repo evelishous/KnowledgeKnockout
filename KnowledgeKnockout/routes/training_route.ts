@@ -19,7 +19,7 @@ export async function training_route_post(req: Request, res: Response) {
 
         if (req.session?.user) {
             const question = await Questions.getQuestion(req.body.qId);
-            const avatar = (<User>req.session.user).avatars.find(a => a.topicBlockId === question.topicId);
+            const avatar = (<User>req.session.user).avatars.find(a => a.topicId === question.topicId);
             if (avatar) avatar.level += 0.001 * question.secondsToSolve;
             console.log(avatar?.level, req.session?.user);
         }

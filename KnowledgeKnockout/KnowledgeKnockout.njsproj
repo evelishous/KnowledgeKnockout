@@ -5,15 +5,8 @@
     <Name>KnowledgeKnockout</Name>
     <RootNamespace>KnowledgeKnockout</RootNamespace>
     <SaveNodeJsSettingsInProjectFile>True</SaveNodeJsSettingsInProjectFile>
-    <Environment>NODE_ENV=development
-DB_HOST=localhost
-DB_PORT=3306
-DB_USER=KK_User
-DB_PASS=KK_Pwd
-DB_NAME=KK_DB
-DB_SessionStoreName=KK_DBSessStore
-SESSION_SECRET=eaO1LJRfcOZEiXMs
-SESSIONID=sid</Environment>
+    <Environment>
+    </Environment>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -40,6 +33,10 @@ SESSIONID=sid</Environment>
   </PropertyGroup>
   <ItemGroup>
     <None Include="KnowledgeKnockout.ts" />
+    <Content Include=".env" />
+    <Content Include="build.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="package.json" />
     <Content Include="public\HMTL_CSS\css\loginStyle.css" />
     <Content Include="public\HMTL_CSS\css\mainStyle.css" />
@@ -71,6 +68,7 @@ SESSIONID=sid</Environment>
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Fight\" />
     <Folder Include="mysql\" />
     <Folder Include="public\HMTL_CSS\" />
     <Folder Include="public\HMTL_CSS\css\" />
@@ -88,6 +86,9 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="chat_example.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Fight\Fight.ts" />
+    <TypeScriptCompile Include="Fight\FightManager.ts" />
+    <TypeScriptCompile Include="Fight\Player.ts" />
     <TypeScriptCompile Include="helpers.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -133,6 +134,9 @@ SESSIONID=sid</Environment>
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="user\BCrypt.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="user\Sessions.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="user\User.ts">

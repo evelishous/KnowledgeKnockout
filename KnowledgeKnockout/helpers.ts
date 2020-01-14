@@ -7,3 +7,4 @@ export const randomizeArray = <T>(arr: T[]): T[] => {
     }
     return newArray;
 };
+export const asyncTimeout = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
