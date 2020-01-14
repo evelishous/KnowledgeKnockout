@@ -49,6 +49,7 @@ app.use(session({
 
 app.use((req, res, next) => {
     if (req.session?.user && !Sessions.get(req.session.id)) Sessions.add(req.session);
+    console.log(req.sessionID, req.session?.id);
 
     next();
 });
