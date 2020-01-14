@@ -39,6 +39,9 @@ SESSIONID=sid</Environment>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="views\chat.html">
+      <SubType>Code</SubType>
+    </Content>
     <None Include="KnowledgeKnockout.ts" />
     <Content Include="package.json" />
     <Content Include="public\HMTL_CSS\css\loginStyle.css" />
@@ -137,6 +140,9 @@ SESSIONID=sid</Environment>
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="user\BCrypt.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="user\Sessions.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="user\User.ts">

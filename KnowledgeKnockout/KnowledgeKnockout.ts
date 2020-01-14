@@ -13,6 +13,7 @@ import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { training_route_get, training_route_post } from './routes/training_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { Authentication } from './user/Authentication';
+import { Sessions } from './user/Sessions';
 
 const app = express();
 
@@ -38,13 +39,8 @@ app.use(session({
     name: process.env.SESSIONID
 }));
 
-// initialize session variables
 app.use((req, res, next) => {
-    if (req.session && !req.session.initialized) {
-        //req.session.user = new User();
-
-        req.session.initialized = true;
-    }
+    if (req.session?.user && !Sessions.get(req.session.id)) Sessions.add(req.session);
 
     next();
 });

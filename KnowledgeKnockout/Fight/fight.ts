@@ -13,10 +13,20 @@ export class Fight {
         for (const user of users) {
             this.players.push(new Player(user));
         }
+
+        for (const player of this.players) {
+            player.socket.on('chatmessage', msg => {
+                for (const player_ of this.players) {
+                    player_.socket.emit('chatmessage', { msg: msg, user: player.user.name });
+                }
+            });
+        }
+
         this.Start();
     }
     private async Start(): Promise<void> {
         for (const player of this.players) {
+            player.user.isInMatch = true;
             player.socket.emit('avatarInfo', this.players.map(player_ => ({ isThisPlayer: player.socket.id === player_.socket.id, avatars: player_.user.avatars.map(avatar => ({ topicId: avatar.topicId, level: avatar.level })) })));
         }
 
@@ -60,5 +70,9 @@ export class Fight {
         }
 
         await asyncTimeout(5000);
+
+        for (const player of this.players) {
+            player.user.isInMatch = false;
+        }
     }
 }

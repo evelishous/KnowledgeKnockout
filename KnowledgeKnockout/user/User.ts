@@ -9,6 +9,7 @@ export class User {
     public avatars: Avatar[] = [];
     public sessionID: string = '';
     public isSearchingMatch: boolean = true;
+    public isInMatch: boolean = false;
     public constructor(id: number, name: string, email: string, progress: number) {
         this._id = id;
         this._name = name;
