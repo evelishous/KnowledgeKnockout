@@ -1,3 +1,10 @@
+// initialize env variables
+import { config } from 'dotenv';
+
+for (const [key, val] of Object.entries(<any>config().parsed)) {
+    process.env[key] = <string>val;
+}
+
 import * as compression from 'compression';
 import * as express from 'express';
 import * as session from 'express-session';
@@ -14,6 +21,7 @@ import { training_route_get, training_route_post } from './routes/training_route
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { Authentication } from './user/Authentication';
 import { Sessions } from './user/Sessions';
+
 
 const app = express();
 
