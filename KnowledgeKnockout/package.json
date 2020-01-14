@@ -7,7 +7,7 @@
     "name": ""
   },
   "scripts": {
-    "build": "node -e \"require(require('path').resolve('./build.js'))\" && tsc --build",
+    "build": "node build.js && tsc --build",
     "clean": "tsc --build --clean"
   },
   "devDependencies": {
