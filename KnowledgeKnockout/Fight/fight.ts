@@ -1,10 +1,7 @@
-import { Socket } from 'socket.io';
-import { SocketConnection } from '../socket_connection/SocketConnection';
-import { User } from "../user/User";
-import { Avatar } from "../user/Avatar";
-import { Player } from './player';
-import { Questions } from '../questions/Questions';
 import { asyncTimeout } from '../helpers';
+import { Questions } from '../questions/Questions';
+import { User } from "../user/User";
+import { Player } from './player';
 
 export class Fight {
     public players: Player[];

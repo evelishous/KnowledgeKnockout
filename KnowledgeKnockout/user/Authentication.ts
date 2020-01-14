@@ -1,7 +1,7 @@
+import { NextFunction, Request, Response } from 'express';
 import { MySQL } from '../mysql/MySql';
 import { BCrypt } from './BCrypt';
 import { User } from './User';
-import { Request, Response, NextFunction } from 'express';
 
 export class Authentication {
     public static async register(name: string, password: string, email: string): Promise<User | undefined> {

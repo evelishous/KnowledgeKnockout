@@ -1,5 +1,5 @@
-import { MySQL } from "../mysql/MySql";
-import { Avatar } from "./Avatar";
+import { MySQL } from '../mysql/MySql';
+import { Avatar } from './Avatar';
 
 export class User {
     private _id: number;

@@ -1,5 +1,5 @@
-import { User } from "../user/User";
-import { Fight } from "./fight";
+import { User } from '../user/User';
+import { Fight } from './fight';
 
 export class FightManager {
     public static searchingUsers: User[];
@@ -16,7 +16,7 @@ export class FightManager {
                 new Fight([sortedUsers[i], sortedUsers[i - 1]]);
                 sortedUsers[i].isSearchingMatch = sortedUsers[i - 1].isSearchingMatch = false;
                 FightManager.searchingUsers.splice(i - 1, 2);
-            }            
+            }
         }
     }
 }
