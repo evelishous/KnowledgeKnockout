@@ -71,6 +71,7 @@ SESSIONID=sid</Environment>
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Fight\" />
     <Folder Include="mysql\" />
     <Folder Include="public\HMTL_CSS\" />
     <Folder Include="public\HMTL_CSS\css\" />
@@ -88,6 +89,9 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="chat_example.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="Fight\fight.ts" />
+    <TypeScriptCompile Include="Fight\fightManager.ts" />
+    <TypeScriptCompile Include="Fight\player.ts" />
     <TypeScriptCompile Include="helpers.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

@@ -8,6 +8,7 @@ export class User {
     private _progress: number;
     public avatars: Avatar[] = [];
     public sessionID: string = '';
+    public isSearchingMatch: boolean = true;
     public constructor(id: number, name: string, email: string, progress: number) {
         this._id = id;
         this._name = name;
@@ -39,5 +40,11 @@ export class User {
     }
     public get progress(): number {
         return this._progress;
+    }
+    public getAvatar(id: number): Avatar {
+        return <Avatar>this.avatars.find(avatar => avatar.id === id);
+    }
+    public get avatarTotalLevel(): number {
+        return this.avatars.reduce((total, current) => total + current.level, 0);
     }
 }
