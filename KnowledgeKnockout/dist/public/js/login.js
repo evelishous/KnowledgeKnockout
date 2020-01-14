@@ -1,6 +1,5 @@
 const name = document.getElementById('name');
 const password = document.getElementById('password');
-const email = document.getElementById('email');
 const submitBtn = document.getElementById('submit');
 
 submitBtn.onclick = async e => {
@@ -10,8 +9,7 @@ submitBtn.onclick = async e => {
 
     let data = {
         name: name.value,
-        password: password.value,
-        email: email.value
+        password: password.value
     };
 
     // validate input
@@ -24,23 +22,21 @@ submitBtn.onclick = async e => {
         errorString += 'Bitte Password eingeben\n';
     }
 
-    if (data.email === '') {
-        errorString += 'Bitte Email eingeben';
-    }
 
     if (errorString.length !== 0) {
         return alert(errorString);
     }
-    try {
-        const res = await fetch('/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        });
+    else {
+        try {
+            const res = await fetch('/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
 
-        alert(await res.json());
-
-    } catch (error) {
-        alert(`Ein Fehler ist aufgetreten: ${error}`);
+            alert(await res.json() ? 'logged in' : 'password or username incorrect');
+        } catch (error) {
+            alert(`Ein Fehler ist aufgetreten: ${error}`);
+        }
     }
 };

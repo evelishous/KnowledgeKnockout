@@ -2,6 +2,7 @@ const name = document.getElementById('name');
 const password = document.getElementById('password');
 const email = document.getElementById('email');
 const submitBtn = document.getElementById('submit');
+const bcrypt = window.dcodeIO.bcrypt;
 
 submitBtn.onclick = async e => {
     e.preventDefault();
@@ -10,7 +11,7 @@ submitBtn.onclick = async e => {
 
     let data = {
         name: name.value,
-        password: password.value,
+        password: bcrypt.hashSync(password.value),
         email: email.value
     };
 
