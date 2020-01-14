@@ -34,8 +34,7 @@ submitBtn.onclick = async e => {
                 body: JSON.stringify(data)
             });
 
-            alert(await res.json());
-
+            alert(await res.json() ? 'logged in' : 'password or username incorrect');
         } catch (error) {
             alert(`Ein Fehler ist aufgetreten: ${error}`);
         }
