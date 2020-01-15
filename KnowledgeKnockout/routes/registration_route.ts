@@ -1,9 +1,11 @@
 ﻿import { Request, Response } from 'express';
-import { resolve } from 'path';
 import { Authentication } from '../user/Authentication';
+import { render } from '../views/render';
 
-export function registration_route_get(req: Request, res: Response) {
-    res.sendFile(resolve('./public/HMTL_CSS/html/registration.html'));
+export async function registration_route_get(req: Request, res: Response) {
+    res.send(await render(['registration'], {
+        title: 'Registrieren'
+    }));
 }
 
 export async function registration_route_post(req: Request, res: Response) {
