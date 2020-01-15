@@ -6,7 +6,7 @@ import { Player } from './Player';
 
 export class Fight {
     public players: Player[] = [];
-    public constructor(users: User[]) {
+    public constructor(userIds: string[]) {
         for (const user of users) {
             user.isInMatch = true;
         }
