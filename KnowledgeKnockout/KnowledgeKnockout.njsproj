@@ -42,9 +42,6 @@
     </Content>
     <Content Include="views\registration.html" />
     <Content Include="views\head.html" />
-    <Content Include="views\_example_head.html" />
-    <Content Include="views\_example_index.html" />
-    <Content Include="views\_example_socket.io.html" />
     <Content Include="views\_registration.html" />
     <None Include="KnowledgeKnockout.ts" />
     <Content Include=".env" />
@@ -97,9 +94,6 @@
     <Folder Include="routes\" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="chat_example.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Fight\Fight.ts" />
     <TypeScriptCompile Include="Fight\FightManager.ts" />
     <TypeScriptCompile Include="Fight\Player.ts" />
@@ -153,7 +147,7 @@
     <TypeScriptCompile Include="user\BCrypt.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="user\Sessions.ts">
+    <TypeScriptCompile Include="user\RequestObjects.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="user\User.ts">
