@@ -6,8 +6,3 @@ export async function mainpage_route_get(req: Request, res: Response) {
         title: 'mainpage'
     }));
 }
-
-export async function mainpage_route_post(req: Request, res: Response): Promise<void> {
-    console.log(req.body);
-}
-
