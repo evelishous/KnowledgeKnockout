@@ -148,10 +148,10 @@
     <TypeScriptCompile Include="user\BCrypt.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="user\RequestObjects.ts">
+    <TypeScriptCompile Include="user\User.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="user\User.ts">
+    <TypeScriptCompile Include="user\Users.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />

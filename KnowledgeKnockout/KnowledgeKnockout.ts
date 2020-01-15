@@ -21,7 +21,7 @@ import { registration_route_get, registration_route_post } from './routes/regist
 import { training_route_get, training_route_post } from './routes/training_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { Authentication } from './user/Authentication';
-import { RequestObjects } from './user/RequestObjects';
+import { Users } from './user/Users';
 
 
 const app = express();
@@ -48,7 +48,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-    RequestObjects.set(req);
+    if (req.session?.id) req.session.user = Users.get(req.session.id);
 
     next();
 });
@@ -71,4 +71,4 @@ app.get('/match', Authentication.loginCheck, match_route_get).post('/match', mat
 
 app.get('*', any_route_get);
 
-FightManager.initialize();
+FightManager.start();
