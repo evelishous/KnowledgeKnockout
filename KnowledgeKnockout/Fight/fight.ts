@@ -38,7 +38,7 @@ export class Fight {
             player.socket.emit('avatarInfo', this.players.map(player_ => ({ isThisPlayer: player.socket.id === player_.socket.id, avatars: player_.user.avatars.map(avatar => ({ topicId: avatar.topicId, level: avatar.level })) })));
         }
 
-        for (let i = 0; i < this.players[0].user.avatars.length; i++) {
+        for (let i = 1; i < this.players[0].user.avatars.length + 1; i++) {
             const question = await Questions.getRandomQuestion(i);
 
             for (const player of this.players) {
