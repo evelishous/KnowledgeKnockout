@@ -1,10 +1,11 @@
 import { Request, Response } from 'express';
-import { resolve } from 'path';
 import { Authentication } from '../user/Authentication';
-import { asyncTimeout } from '../helpers';
+import { render } from '../views/render';
 
 export async function login_route_get(req: Request, res: Response) {
-    res.sendFile(resolve('./public/HMTL_CSS/html/login.html'));
+    res.send(await render(['login'], {
+        title: 'Login'
+    }));
 }
 
 export async function login_route_post(req: Request, res: Response) {
@@ -12,8 +13,7 @@ export async function login_route_post(req: Request, res: Response) {
         req.session.user = await Authentication.login(req.body.name, req.body.password);
         if (req.session.user) {
             req.session.user.sessionID = req.session.id;
-            await asyncTimeout(1000);
-            console.log(req.session.user,req.session.user.avatars);
+            res.redirect('/mainpage');
         }
     }
 
