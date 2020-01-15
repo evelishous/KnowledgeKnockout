@@ -11,10 +11,8 @@ export class Fight {
         for (const user of users) {
             user.isInMatch = true;
         }
-        console.log(users);
 
         const interval = setInterval(() => {
-            console.log(users);
             if (users.every(user => !!SocketConnection.get(user.sessionID))) {
                 for (const user of users) {
                     this.players.push(new Player(user));
