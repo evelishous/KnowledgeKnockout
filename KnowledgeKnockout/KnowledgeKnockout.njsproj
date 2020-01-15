@@ -54,7 +54,7 @@
     <Content Include="public\HMTL_CSS\css\quizStyle.css" />
     <Content Include="public\HMTL_CSS\css\uebungStyle.css" />
     <Content Include="public\HMTL_CSS\html\login.html" />
-    <Content Include="public\HMTL_CSS\html\main.html" />
+    <Content Include="public\HMTL_CSS\html\mainpage.html" />
     <Content Include="public\HMTL_CSS\html\quiz.html" />
     <Content Include="public\HMTL_CSS\html\registration.html" />
     <Content Include="public\HMTL_CSS\html\uebung.html" />
@@ -133,6 +133,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\training_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\mainpage_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
