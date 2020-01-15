@@ -1,4 +1,4 @@
-import { asyncTimeout } from '../helpers';
+import { asyncTimeout, asyncTimeoutWithCondition } from '../helpers';
 import { Questions } from '../questions/Questions';
 import { SocketConnection } from '../socket_connection/SocketConnection';
 import { User } from '../user/User';
@@ -42,10 +42,11 @@ export class Fight {
             const question = await Questions.getRandomQuestion(i);
 
             for (const player of this.players) {
+                player.answered = player.answerIsCorrect = false;
                 player.socket.emit('question', { id: question.id, content: question.content, time: question.secondsToSolve });
             }
 
-            await asyncTimeout(question.secondsToSolve * 1000);
+            await asyncTimeoutWithCondition(question.secondsToSolve * 1000, this.players.map(player => ({ reference: player, propertyName: 'answered', value: true })));
 
             if (this.players.every(player => player.answerIsCorrect)) {
                 for (const player of this.players) {
