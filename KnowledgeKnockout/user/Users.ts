@@ -11,4 +11,7 @@ export class Users {
     public static remove(sessionID: string): void {
         Users.users.delete(sessionID);
     }
+    public static get values(): User[] {
+        return [...Users.users.values()];
+    }
 }
