@@ -28,9 +28,11 @@
         setInterval(async () => {
             const response = await fetch('/match', { method: 'post' });
 
-            if (JSON.parse(await response.text())) {
+            const o = await response.json();
+            console.log(o);
+            if (o.isInMatch) {
                 window.location.href = '/match';
-            } else console.log(false);
+            }
         }, 1000);
 
     </script>

@@ -13,6 +13,7 @@ export async function match_route_post(req: Request, res: Response) {
         req.session.user.isSearchingMatch = req.body.isSearchingMatch;
 
         if (req.session.user.isSearchingMatch) FightManager.searchingUsers.push(req.session.user);
+        console.log(FightManager.searchingUsers.length);
     }
 
     res.send({ isInMatch: !!req.session?.user?.isInMatch, isSearchingMatch: !!req.session?.user?.isSearchingMatch });
