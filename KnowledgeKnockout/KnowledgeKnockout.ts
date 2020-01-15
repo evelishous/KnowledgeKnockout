@@ -22,7 +22,7 @@ import { mainpage_route_get, mainpage_route_post } from './routes/mainpage_route
 import { training_route_get, training_route_post } from './routes/training_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { Authentication } from './user/Authentication';
-import { Users } from './user/Sessions';
+import { RequestObjects } from './user/RequestObjects';
 
 
 
@@ -50,9 +50,7 @@ app.use(session({
 }));
 
 app.use((req, res, next) => {
-    if (req.session?.user && !Users.get(req.session.id)) Users.add(req.session.user);
-
-    if (req.session?.user) req.session.user = Users.get(req.sessionID || '');
+    RequestObjects.set(req);
 
     next();
 });
